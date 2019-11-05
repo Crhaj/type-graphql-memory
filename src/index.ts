@@ -13,9 +13,7 @@ const bootstrap = (async () => {
     let server
     try {
         const schema = await buildSchema({
-            resolvers: [
-                ExampleResolver,
-            ],
+            resolvers: [ExampleResolver],
             nullableByDefault: true,
         })
 
