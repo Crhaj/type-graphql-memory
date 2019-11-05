@@ -1,0 +1,25 @@
+{
+  "name": "type-graphql-memory",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/nodemon",
+    "tsc": "tsc",
+    "start": "yarn tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "1.17.5",
+    "typescript": "2.9.1",
+    "ts-node": "6.1.0",
+    "@babel/cli": "7.0.0-beta.49",
+    "@babel/core": "7.0.0-beta.49",
+    "@babel/plugin-proposal-class-properties": "7.0.0-beta.49",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.49",
+    "@babel/preset-env": "7.0.0-beta.49",
+    "@babel/preset-typescript": "7.0.0-beta.49",
+    "@types/node": "10.3.1"
+  }
+}
