@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/nodemon",
     "tsc": "tsc",
-    "start": "yarn tsc && node dist/index.js"
+    "start": "yarn tsc && node dist/index.js",
+    "generate": "gql-gen"
   },
   "dependencies": {
     "apollo-server-express": "2.9.6",
