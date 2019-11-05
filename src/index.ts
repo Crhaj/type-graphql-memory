@@ -1,12 +1,39 @@
+import "reflect-metadata"
+import * as express from "express"
+import * as bodyParser from "body-parser"
+import * as cors from "cors"
+import { buildSchema } from "type-graphql"
+import { ApolloServer } from "apollo-server-express"
+import { ExampleResolver } from "./resolvers/ExampleResolver"
+import { contextFunction } from "./context"
 
-import app from "./App"
+const bootstrap = (async () => {
+    const port = process.env.PORT || 4010
 
-const port = process.env.PORT || 3011
+    let server
+    try {
+        const schema = await buildSchema({
+            resolvers: [
+                ExampleResolver,
+            ],
+            nullableByDefault: true,
+        })
 
-app.listen(port, (err) => {
-    if (err) {
-        return console.log(err)
+        server = new ApolloServer({
+            schema: schema,
+            context: contextFunction,
+        })
+    } catch (error) {
+        console.log("Error in bootstrap", error)
     }
 
-    return console.log(`server is listening on port ${port}`)
-})
+    const app = express()
+    app.use(cors({ origin: "*", credentials: true }))
+    app.use(bodyParser.json({ limit: "4mb" }))
+
+    server.applyMiddleware({ app: app, path: "/" })
+
+    app.listen({ port: port }, () => {
+        console.log(`GraphQL ready at port ${port}`)
+    })
+})()
