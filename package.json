@@ -16,7 +16,7 @@
     "ramda": "0.26.1",
     "express": "4.17.1",
     "reflect-metadata": "0.1.13",
-    "type-graphql": "0.17.5"
+    "type-graphql": "0.17.6"
   },
   "devDependencies": {
     "nodemon": "1.17.5",
